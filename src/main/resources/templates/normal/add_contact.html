@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{normal/base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>User-DashBoard</title>
+
+</head>
+<body>
+	<section class="cform">
+		<form name="form" class="form-addcontact" method="post" th:object="${contact}" onsubmit="return validateForm()"
+		th:action="@{/user/process-contact}" enctype="multipart/form-data">
+			<section class="vh-100 gradient-custom">
+				<div class="container py-2 h-100">
+					<div class="row d-flex justify-content-center align-items-center h-100">
+						<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+							<div class="card bg-dark text-white" style="border-radius: 1rem;">
+								<div class="card-body p-5">
+									<div class="mb-md-1 mt-md-3 pb-1">
+										<h2 class="fw-bold mb-2 text-uppercase text-center">Contact Details</h2>
+										<p class="text-white-50 mb-5 text-center">Please fill all the fields.</p>
+						<!-- first name -->	
+										<div class="input-group flex-nowrap">
+  											<span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-user"></i></span>
+  											<input required type="text" class="form-control" placeholder="enter first name here..." name="name"
+  											aria-label="Username" aria-describedby="addon-wrapping">
+										</div>
+						<!-- second name -->
+										<div class="input-group flex-nowrap mt-3">
+  											<span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-ellipsis"></i></span>
+  											<input required type="text" class="form-control" placeholder="enter last name here..." name="secondName"
+  											aria-label="Username" aria-describedby="addon-wrapping">
+										</div>
+						<!-- choose gender -->
+										<div class="input-group flex-nowrap mt-3">
+  											<div class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-venus-mars"></i></div>
+											<div class="form-check form-check-inline">
+											  <input required class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male">
+											  <label class="form-check-label" for="inlineRadio1">Male</label>
+											</div>
+											<div class="form-check form-check-inline">
+											  <input required class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="female">
+											  <label class="form-check-label" for="inlineRadio2">Female</label>
+											</div>
+											<div class="form-check form-check-inline">
+											  <input required class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="other">
+											  <label class="form-check-label" for="inlineRadio2">Other</label>
+											</div>											
+										</div>
+						<!-- phone number -->
+										<div class="input-group flex-nowrap mt-3">
+  											<span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-phone"></i></span>
+  											<input required min="10" type="tel" class="form-control" placeholder="enter phone no. here..." name="phone"
+  											aria-label="Username" aria-describedby="addon-wrapping">
+										</div>	
+					    <!-- email field -->
+										<div class="input-group flex-nowrap mt-3">
+  											<span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-envelope"></i></span>
+  											<input required type="email" class="form-control" placeholder="enter email here..." name="email"
+  											aria-label="Username" aria-describedby="addon-wrapping">
+										</div>
+						<!-- work field -->		
+										<div class="input-group flex-nowrap mt-3">
+  											<span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-briefcase"></i></span>
+  											<input required type="text" class="form-control" placeholder="enter designation here..." name="work"
+  											aria-label="Username" aria-describedby="addon-wrapping">
+										</div>	
+					<!-- description field -->
+										<div class="input-group flex-nowrap mt-3">
+  											<textarea class="form-control" placeholder="Leave a comment here" id="description" name="description"
+  											style="width:100px;"></textarea>
+										</div>		
+					<!-- contact Image field -->
+										<div class="mt-3">
+										  <input class="form-control" type="file" th:field="*{image}" name="image" accept="image/png, image/jpeg, image/jpg
+										  , image/svg">
+										</div>
+										<div class="text-center mt-3">
+											<button class="btn btn-outline-light btn-lg px-5" type="submit">Save</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</form>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+		<script>
+      		tinymce.init({
+        		selector: '#description',
+        		min_width: 900
+      		});
+    </script> 
+	</section>
+</body>
+</html>

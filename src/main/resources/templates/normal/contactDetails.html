@@ -1,0 +1,57 @@
+<!DOCTYPE unspecified PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{normal/base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>User-DashBoard</title>
+</head>
+<body>
+	<section class="showdetails">
+		<div class="card bg-dark" th:if="${contact}">
+			<div class="card-body">
+				<h1 class="text-center text-white">Contact Details</h1>
+				<div class="text-center">
+					<img class="img-fluid imgprofile mt-3" alt="profile photo" th:src="@{'/images/'+${contact.image}}">
+					
+						<p class="text-white mt-3" th:text="${'SMC'+contact.cid}"></p><hr style="color: white;">
+						<div class="input-group mb-3">
+  							<span class="input-group-text" id="inputGroup-sizing-default">Name: </span>
+  							<span th:text="${contact.name+' '+contact.secondName}" class="form-control" aria-label="Sizing example input" 
+  								aria-describedby="inputGroup-sizing-default"></span>
+						</div>
+						<div class="input-group mb-3">
+  							<span class="input-group-text" id="inputGroup-sizing-default">Email: </span>
+  							<span th:text="${contact.email}" class="form-control" aria-label="Sizing example input" 
+  								aria-describedby="inputGroup-sizing-default"></span>
+						</div>
+						<div class="input-group mb-3">
+  							<span class="input-group-text" id="inputGroup-sizing-default">Phone: </span>
+  							<span th:text="${contact.phone}" class="form-control" aria-label="Sizing example input" 
+  								aria-describedby="inputGroup-sizing-default"></span>
+						</div>
+						<div class="input-group mb-3">
+  							<span class="input-group-text" id="inputGroup-sizing-default">Gender: </span>
+  							<span th:text="${contact.gender}" class="form-control" aria-label="Sizing example input" 
+  								aria-describedby="inputGroup-sizing-default"></span>
+						</div>
+						<div class="input-group mb-3">
+  							<span class="input-group-text" id="inputGroup-sizing-default">Work: </span>
+  							<span th:text="${contact.work}" class="form-control" aria-label="Sizing example input" 
+  								aria-describedby="inputGroup-sizing-default"></span>
+						</div>	
+						<div class="input-group mb-3">
+  							<span class="input-group-text" id="inputGroup-sizing-default">Description: </span>
+  							<span th:utext="${contact.description}" class="form-control" aria-label="Sizing example input" 
+  								aria-describedby="inputGroup-sizing-default"></span>
+						</div>				
+				</div>
+				<div class="container text-center">
+					<a th:href="@{/user/show_contact/0}"><button class="btn btn-primary">Back</button></a>
+				</div>
+			</div>
+		</div>
+		<h1 class="text-white text-center bg-danger" th:unless="${contact}">You don't have permission to view this contacts....</h1>
+	</section>
+</body>
+</html>
