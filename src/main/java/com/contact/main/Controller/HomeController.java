@@ -57,7 +57,8 @@ public class HomeController {
 	
 //	registration handler
 	@PostMapping("/register")
-	public String register(@Valid @ModelAttribute("user") User user,BindingResult bresult ,@RequestParam(value = "condition",defaultValue = "false") boolean condition,
+	public String register(@Valid @ModelAttribute("user") User user,BindingResult bresult 
+			,@RequestParam(value = "condition",defaultValue = "false") boolean condition,
 			Model model,HttpSession session ){
 		
 		try {

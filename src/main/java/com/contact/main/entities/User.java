@@ -3,6 +3,8 @@ package com.contact.main.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.Pattern;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,7 +28,8 @@ public class User {
 	private int id;
 
 	@NotBlank(message = "Field cannot reamin blank")
-	@Size(min = 3,max = 12, message = "Should contain min 3 and max 12 characters")
+	@Size(min = 3,max = 50, message = "Should contain min 3 and max 12 characters")
+	@Pattern(regexp = "^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}")
 	private String name;
 	
 	@Column(unique = true)
